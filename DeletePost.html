@@ -13,12 +13,13 @@
                 exit();
             }
             echo '<table border="1" style= "width=100%" >';
-            echo "<td> Posts</td> <td> Authors </td> <td> Delete </td> <tr>";
+            echo "<td> Post_id </td> <td> Posts</td> <td> Authors </td> <td> Delete </td> <tr>";
 
             if($result = $mysqli->query("select * from Posts"))
             {
                 while($row = $result->fetch_assoc())
                 {
+                    echo"<td>" .$row["post_id"]. "</td>";
                     echo"<td>" .$row["content"]. "</td>";
                     echo"<td>". $row["author_id"]. "</td>";
                     $num = $row["post_id"];
