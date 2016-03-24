@@ -25,4 +25,5 @@ else
     printf("Failed to add user ".$user."<br>");
 }
 
+$mysqli->close();
 ?>
