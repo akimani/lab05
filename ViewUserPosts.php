@@ -11,14 +11,16 @@ if ($mysqli->connect_errno) {
 echo"Posts made by ".$myselect." <br><br>";
 echo '<table border="1" style= "width=100%" >';
 echo "<td> Post_id</td> <td> Content </td> <tr>";
-if($result = $mysqli->query("select * from Posts"))
+if($result = $mysqli->query("select post_id, content, author_id from Posts join Users on Posts.author_id=Users.user_id"))
 {
     while($row = $result->fetch_assoc())
     {
-        echo"<td>". $row["post_id"]. "</td>";
-        echo"<td>". $row["content"]. "</td>";
-        echo"<td>". $row["author_id"]. "</td>";
-        echo"<tr>";
+        if($row["author_id"] == $myselect)
+        {
+            echo"<td>". $row["post_id"]. "</td>";
+            echo"<td>". $row["content"]. "</td>";
+            echo"<tr>";
+        }
     }
 
     $result->free();
